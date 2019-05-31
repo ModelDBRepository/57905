@@ -1,0 +1,77 @@
+scan=n
+seed=7891
+E_CELL: GY model
+gNa=35.0 gNaP=0.2 gKdr=6.0 gA=0.0 gZ=1.8 gL=0.05
+n_Iapp=2 nin_Iapp_a=16 nt_Iapp=500 Iapp=0.0 0.0 Iapp_a=4.0 0.0
+Cm=1.0 VNa=55.0 VK=-90.0 VL=-70.0 phi=10.0
+thetam=-30.0 sigmam=9.5 thetap=-47.0 sigmap=3.0
+thetah=-45.0 sigmah=-7.0 thetan=-33.0 sigman=10.0
+thetaa=-50.0 sigmaa=20.0 thetab=-80.0 sigmab=-6.0 tauB=15.0
+thetaz=-39.0 sigmaz=5.0 tauZ=75.0
+non=1024 rho=32.0 Vinc1=-70.0 Vinc2=-70.0
+I CELL: WB model
+gNa=35.0 gKdr=9.0 gL=0.1
+n_Iapp=2 nin_Iapp_a=16 nt_Iapp=500 Iapp=0.0 0.0 Iapp_a=4.0 0.0
+Cm=1.0 VNa=55.0 VK=-90.0 VL=-65.0 phi=5.0
+non=1024 rho=32.0 Vinc1=-70.0 Vinc2=-70.0
+SYNAPSE
+geometry=o fshape=e concur=n
+Glu: kt=0.0 kv=0.001 Vrev=0.0
+AMPA: ths=-20.0 sigs=2.0 kf=1.0 tAMPA=5.0 ivar=2
+NMDA: kx=1.0 tsrNMDA=14.286 kf=1.0 tsdNMDA=100.0 ivar=4
+ths=-20.0 sigs=2.0 thetanp=-50.0 sigmanp=12.5 zeromag=y
+GABAA: ths=-20.0 sigs=2.0 kt=0.0 kv=0.001 kf=1.0 kr=0.1 Vrev=-70.0
+EE: gAMPA=0.08 gNMDA=0.07 Min=2.0 sig=1.0
+IE: gGABAA=0.05 Min=2.0 sig=0.5
+EI: gAMPA=0.2 gNMDA=0.0 Min=2.0 sig=1.0 Nalpha=n alpha=0.25
+II: gGABAA=0.0 Min=2.0 sig=0.5 gel=0.0 Mel=2.0
+GENERAL
+deltat=0.01 nt=200000
+E: nwrite=1 nwritear=512
+I: nwrite=1 nwritear=512
+twrite=10 tmcol=5000000 tmtrj=100000 imtrj=512 tchi=200000 traster=1000000
+chirange=1.0
+method=r incond=b smforce=l firestop=n
+anburp=y Ttransient=1000.0 tolerance=0.2 delta=0.5 mapval=3
+Istart=0.0 Iend=0.0 nI=1 difstart=n
+gNstart=0.1 tsdNstart=100.0 gAstart=0.21 gNaPstart=0.08
+
+INITIAL CONDITIONS
+E
+V     h     n     b     z     T     sP     xN     sN 
+-70.0 0.8   0.2   0.15  0.1   1.0   0.8    0.0    0.9
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+I
+V     h     n1    n3    x     s
+-64.0 0.95  0.25  0.2   1.0   0.0
+-62.0 0.85  0.25  0.2   1.0   0.0
+
+
+scan      : n - no, e - equal spacing, u - unequal spacing,
+            example: SYNAPSE IE:gGABAA
+            f - find borders, p - find borders considering initial conditions.
+zeromag   : y - zero [Mg], n - no.
+geometry  : a - all-to-all, s - sparse, o - 1-d.
+fshape    : e - exp, s - step, g- Gaussian.
+concur    : n - conductance, r - current.
+method    : r - Runge-Kutta 4, t - Runge-Kutta 2, e - Euler,
+            o - Runge-Kutta 4 with interaction calculated once,
+            w - Runge-Kutta 2 with interaction calculated once,
+incond    : t - from Vin - soma, aux=aux(V), s - from Vin - soma, aux=0,
+            n - from Vin, soma+dendrite, r - read.
+            a - random V, axu 0, b - random V, aux=aux(V).
+smforce   : p - always print (sm=0), n - always no print (sm=1), 
+            l - leave as is.
+firestop  : y - stop when edge cells fire, n - no.
+anburp    : y - analyze bursting pattern, n - do not analyze.
+mapval    : 1 - spike_num, 2 - n_spk_in_bur, 3 - n_spk_in_bur_a.
+difstart  : y - start with different parameters, n - use the original
+            parameters.
+
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0
+-70.0 0.8   0.2   0.15  0.1   1.0   0.0    0.0    0.0

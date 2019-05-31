@@ -1,0 +1,39 @@
+Model of a one-dimensional cortical network, according to the paper:
+
+Golomb D, Shedmi A, Curtu R, Ermentrout B (2005)
+Persistent synchronized bursting activity in cortical tissues with low
+magnesium concentration: a modeling study
+J. Neurophysiol. published 19 October 2005, 10.1152/jn.00932.2005
+
+The program is composed of several C files:
+
+sp.c  : main file. It is used for running several parameter sets.
+sn.c  : runs one parameter set.
+sgy.c : routines for the excitatory cell model.
+swb.c : routines for the inhibitory cell model.
+nr.c  : routines from the library "Numerical Recipes" (only few of them
+        are needed for this program).
+
+The files sp.n.a3 and sp.n.a4 are parameter files.
+
+Commands (for a Unix/Linux operating system):
+
+To compile the program
+
+make sp
+
+to run the program for the two data files
+
+sp.ex a3
+sp.ex a4
+
+to generate figure 12 in the paper (you should have the graphic program
+xmgrace):
+
+rasei.com
+
+The file rasei.com is a Unix/Linux command procedure.
+
+If you have problems, E-mail me to golomb@bgu.ac.il
+
+  David Golomb
